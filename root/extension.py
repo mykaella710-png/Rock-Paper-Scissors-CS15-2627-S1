@@ -10,7 +10,6 @@ def player_choice():
         p = input("What is your choice?\n")
         p = p.lower()
         if p == "rock" or p == "paper" or p == "scissors":
-            print(p)
             return p
         else:
             print("Invalid choice!")
