@@ -1,14 +1,16 @@
 import random
 
-def get_cpu_choice():
+def cpu_choice():
     c = random.choice(["rock", "paper", "scissors"])
+    print ("cpu choice",c)
     return c
 
-def get_player_choice():
+def player_choice():
     while True:
         p = input("What is your choice?\n")
         p = p.lower()
         if p == "rock" or p == "paper" or p == "scissors":
+            print(p)
             return p
         else:
             print("Invalid choice!")
@@ -32,8 +34,31 @@ def check_win(c,p):
         winner = "Player wins!"
     return winner
 
-cpu_choice = get_cpu_choice()
-player_choice = get_player_choice()
-winner = check_win(cpu_choice,player_choice)
+def play_round():
+    player = player_choice()
+    computer = cpu_choice()
+    winner = check_win(computer, player)
+    return winner
 
-print(winner)
+Round = 1
+cscore = 0
+pscore = 0
+tscore = 0
+
+while Round <= 5:
+    win = play_round()
+    print(win)
+    if win == "Cpu wins!":
+        cscore = cscore + 1
+        if cscore == 3:
+            Round = 6
+    elif win == "Player wins!":
+        pscore = pscore + 1
+        if pscore == 3:
+            Round = 6
+    else:
+        tscore = tscore + 1
+    Round = Round + 1
+    print(cscore)
+    print(pscore)
+    print(tscore)
